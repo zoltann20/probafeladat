@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Kapcsolat próbafeladat{% endblock %}</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css">
+        {% block stylesheets %}
+        {% endblock %}
+
+        {% block javascripts %}
+        {% endblock %}
+    </head>
+    <body style="background:#969696">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" title="Csak a látszat miatt" href="{{ path('home') }}">Próba feladat</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" title="Csak a látszat miatt" href="{{ path('home') }}">Főoldal</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" title="Csak a látszat miatt" href="{{ path('message') }}">Kapcsolat</a>
+                    </li>
+                </ul>
+                <!-- A keresés csak feldobja a navbar-t, nincs szerepe jelenleg-->
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Keresés..." aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Keresés</button>
+                </form>
+                </div>
+            </div>
+        </nav>
+
+        {% for success in app.flashes('success') %}
+            <div class="alert alert-success">
+                {{ success }}
+            </div>
+        {% endfor %}
+
+        <div class="container-fluid" style="height:780px">
+            {% block body %}
+
+            {% endblock %}
+        </div>
+
+        <footer class="bg-dark text-center text-white">
+            <div class="text-center bg-dark p-3" style="color:gray">
+                © 2021 Copyright: Wachtler Zoltán
+            </div>
+        </footer>
+
+    </body>
+</html>
